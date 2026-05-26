@@ -6,15 +6,15 @@ from src.hr_diagram import plot_hr
 from src.cluster_stars import cluster_stars
 from src.plot_clusters import plot_clusters
 
-# Load Gaia data
+# Load Gaia sample
 data = load_gaia()
 
-# Extract color
+# Color index
 bp_rp = data[
     "bp_rp"
 ]
 
-# Compute absolute magnitude
+# Absolute magnitude
 abs_mag = (
     data[
         "phot_g_mean_mag"
@@ -33,20 +33,20 @@ abs_mag = (
     5
 )
 
-# Plot HR diagram
+# HR diagram
 plot_hr(
     bp_rp,
     abs_mag
 )
 
-# Perform clustering
+# Stellar clustering
 table = cluster_stars(
     bp_rp,
     abs_mag,
     n_clusters=3
 )
 
-# Plot clustered HR
+# Cluster visualization
 plot_clusters(
     table
 )

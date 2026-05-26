@@ -3,12 +3,18 @@ import numpy as np
 from src.gaia_query import load_gaia
 from src.hr_diagram import plot_hr
 
+from src.cluster_stars import cluster_stars
+from src.plot_clusters import plot_clusters
+
+# Load Gaia data
 data = load_gaia()
 
+# Extract color
 bp_rp = data[
     "bp_rp"
 ]
 
+# Compute absolute magnitude
 abs_mag = (
     data[
         "phot_g_mean_mag"
@@ -27,11 +33,25 @@ abs_mag = (
     5
 )
 
+# Plot HR diagram
 plot_hr(
     bp_rp,
     abs_mag
 )
 
+# Perform clustering
+table = cluster_stars(
+    bp_rp,
+    abs_mag,
+    n_clusters=3
+)
+
+# Plot clustered HR
+plot_clusters(
+    table
+)
+
+# Save Gaia sample
 data.write(
     "gaia_sample.csv",
     overwrite=True

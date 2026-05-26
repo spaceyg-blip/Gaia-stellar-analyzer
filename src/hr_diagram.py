@@ -12,17 +12,18 @@ def plot_hr(
     plt.scatter(
         bp_rp,
         abs_mag,
-        s=2
+        s=3,
+        alpha=0.5
     )
 
     plt.gca().invert_yaxis()
 
     plt.xlabel(
-        "BP − RP"
+        "BP − RP Color"
     )
 
     plt.ylabel(
-        "Absolute Magnitude"
+        "Absolute Magnitude (G)"
     )
 
     plt.title(
@@ -32,6 +33,8 @@ def plot_hr(
     plt.grid(
         alpha=0.3
     )
+
+    plt.tight_layout()
 
     plt.savefig(
         "hr_diagram.png",

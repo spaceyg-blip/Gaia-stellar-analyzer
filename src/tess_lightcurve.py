@@ -9,6 +9,10 @@ def load_lightcurve(
         mission="TESS"
     )
 
-    lc = search.download()
+    lc = search.download_all()
+
+    lc = lc.stitch()
+
+    lc = lc.remove_nans()
 
     return lc
